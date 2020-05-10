@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "title": "Learn Redux!!",
+      "_id": "jkp5y",
+      "isDone": false
+    },
+    {
+      "_id": "7ujrh",
+      "title": "Workout at the gym",
+      "isDone": true
+    },
+    {
+      "_id": "nmkr9",
+      "title": "Watch Last Dance in Netflix",
+      "isDone": false
+    }
+  ]
+}
