@@ -18,19 +18,18 @@ class TodoEdit extends React.Component {
 
   onSumbit = (e) => {
     e.preventDefault();
-    const { saveTodo, setAlert } = this.props;
+    const { saveTodo, setAlert, removeAlert } = this.props;
     saveTodo(this.state);
-    setAlert({ txt: 'Todo Successfuly Updated', type: 'warning' });
-    setTimeout(() => this.props.removeAlert(), 2500);
+    setAlert({ txt: 'Todo Successfully Updated', type: 'warning' });
+    setTimeout(() => removeAlert(), 2500);
     this.props.onSetCurrent();
     this.setState({ title: '' });
   };
 
   render() {
-    const { alert } = this.props;
     return (
       <React.Fragment>
-        {alert && <Alert alertMsg={alert} />}
+        <Alert />
         <div className='text-center flex-center'>
           <form onSubmit={this.onSumbit}>
             <input
@@ -56,7 +55,6 @@ class TodoEdit extends React.Component {
 const mapStateToProps = (state) => {
   return {
     todo: state.todoApp.currTodo,
-    alert: state.alert.alert,
   };
 };
 

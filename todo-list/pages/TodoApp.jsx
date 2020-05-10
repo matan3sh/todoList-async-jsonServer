@@ -15,6 +15,7 @@ import TodoEdit from '../components/Todos/TodoEdit.jsx';
 import TodoFilter from '../components/Todos/TodoFilter.jsx';
 import TodoSearch from '../components/Todos/TodoSearch.jsx';
 import Spinner from '../components/Layout/Spinner.jsx';
+import Alert from '../components/Layout/Alert.jsx';
 
 const { connect } = ReactRedux;
 

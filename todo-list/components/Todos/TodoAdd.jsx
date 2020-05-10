@@ -17,10 +17,10 @@ class TodoAdd extends React.Component {
 
   onSumbit = (e) => {
     e.preventDefault();
-    const { saveTodo, updateUser, setAlert } = this.props;
+    const { saveTodo, updateUser, setAlert, removeAlert } = this.props;
     if (this.state.title === '') {
       setAlert({ txt: 'You Cant Add Empty Todo', type: 'dark' });
-      setTimeout(() => this.props.removeAlert(), 2500);
+      setTimeout(() => removeAlert(), 2500);
       return;
     }
     let newActivity = { txt: 'Added a Todo', at: Date.now() };
@@ -31,16 +31,15 @@ class TodoAdd extends React.Component {
     };
     saveTodo(this.state);
     updateUser(user);
-    setAlert({ txt: 'Todo Successfuly Added', type: 'success' });
-    setTimeout(() => this.props.removeAlert(), 2500);
+    setAlert({ txt: 'Todo Successfully Added', type: 'success' });
+    setTimeout(() => removeAlert(), 2500);
     this.setState({ title: '' });
   };
 
   render() {
-    const { alert } = this.props;
     return (
       <React.Fragment>
-        {alert && <Alert alertMsg={alert} />}
+        <Alert />
         <div className='text-center flex-center'>
           <form onSubmit={this.onSumbit}>
             <input
@@ -66,7 +65,6 @@ class TodoAdd extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.todoApp.user,
-    alert: state.alert.alert,
   };
 };
 
