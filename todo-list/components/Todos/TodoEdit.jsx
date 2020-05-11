@@ -1,7 +1,7 @@
 const { connect } = ReactRedux;
 
 import { saveTodo } from '../../store/actions/TodoActions.js';
-import { setAlert, removeAlert } from '../../store/actions/AlertActions.js';
+import { setAlert } from '../../store/actions/AlertActions.js';
 
 class TodoEdit extends React.Component {
   state = {
@@ -62,7 +62,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   saveTodo,
   setAlert,
-  removeAlert,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoEdit);
