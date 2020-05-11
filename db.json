@@ -1,9 +1,9 @@
 {
   "todos": [
     {
-      "title": "Learn Redux!!",
+      "title": "Learn Redux!",
       "_id": "jkp5y",
-      "isDone": false
+      "isDone": true
     },
     {
       "_id": "7ujrh",
@@ -14,6 +14,11 @@
       "_id": "nmkr9",
       "title": "Watch Last Dance in Netflix",
       "isDone": false
+    },
+    {
+      "title": "Hacking a Website",
+      "isDone": false,
+      "_id": "KKAOV7M"
     }
   ]
 }
