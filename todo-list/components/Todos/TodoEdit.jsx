@@ -2,7 +2,6 @@ const { connect } = ReactRedux;
 
 import { saveTodo } from '../../store/actions/TodoActions.js';
 import { setAlert, removeAlert } from '../../store/actions/AlertActions.js';
-import Alert from '../Layout/Alert.jsx';
 
 class TodoEdit extends React.Component {
   state = {
@@ -18,10 +17,13 @@ class TodoEdit extends React.Component {
 
   onSumbit = (e) => {
     e.preventDefault();
-    const { saveTodo, setAlert, removeAlert } = this.props;
+    const { saveTodo, setAlert } = this.props;
+    if (this.state.title === '') {
+      setAlert({ txt: 'You Cant Add Empty Todo', type: 'dark' });
+      return;
+    }
     saveTodo(this.state);
     setAlert({ txt: 'Todo Successfully Updated', type: 'warning' });
-    setTimeout(() => removeAlert(), 2500);
     this.props.onSetCurrent();
     this.setState({ title: '' });
   };
@@ -29,7 +31,6 @@ class TodoEdit extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Alert />
         <div className='text-center flex-center'>
           <form onSubmit={this.onSumbit}>
             <input

@@ -1,7 +1,10 @@
+import { removeAlert } from '../../store/actions/AlertActions.js';
+
 const { connect } = ReactRedux;
 
-const Alert = ({ alert }) => {
+const Alert = ({ alert, removeAlert }) => {
   if (alert) {
+    setTimeout(() => removeAlert(), 2500);
     return (
       <div className={`alert bg-${alert.type} text-center bold`}>
         {alert.txt}
@@ -18,4 +21,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Alert);
+const mapDispatchToProps = {
+  removeAlert,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Alert);

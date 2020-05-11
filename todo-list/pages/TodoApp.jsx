@@ -9,13 +9,13 @@ import {
   loadUser,
   updateUser,
 } from '../store/actions/TodoActions.js';
+import { setAlert } from '../store/actions/AlertActions.js';
 import TodoList from '../components/Todos/TodoList.jsx';
 import TodoAdd from '../components/Todos/TodoAdd.jsx';
 import TodoEdit from '../components/Todos/TodoEdit.jsx';
 import TodoFilter from '../components/Todos/TodoFilter.jsx';
 import TodoSearch from '../components/Todos/TodoSearch.jsx';
 import Spinner from '../components/Layout/Spinner.jsx';
-import Alert from '../components/Layout/Alert.jsx';
 
 const { connect } = ReactRedux;
 
@@ -28,14 +28,16 @@ class TodoApp extends React.Component {
   }
 
   onDelete = (todoId) => {
+    const { setAlert, removeTodo, updateUser } = this.props;
     let newActivity = { txt: 'Removed a Todo', at: Date.now() };
     const user = {
       fullName: this.props.user.fullName,
       activitis: [newActivity, ...this.props.user.activitis],
       prefs: this.props.user.prefs,
     };
-    this.props.removeTodo(todoId);
-    this.props.updateUser(user);
+    setAlert({ txt: 'Todo Successfully Removed', type: 'success' });
+    removeTodo(todoId);
+    updateUser(user);
   };
 
   onSetDone = (todo) => {
@@ -116,6 +118,7 @@ const mapDispatchToProps = {
   showDone,
   showAll,
   showActive,
+  setAlert,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);

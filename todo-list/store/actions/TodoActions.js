@@ -42,8 +42,9 @@ export function setTodo(todo) {
 export function saveTodo(todo) {
   return (dispatch) => {
     const type = todo._id ? 'UPDATE_TODO' : 'ADD_TODO';
-    dispatch({ type, payload: todo });
-    todoService.save(todo).then((savedTodo) => console.log(savedTodo));
+    todoService
+      .save(todo)
+      .then((savedTodo) => dispatch({ type, payload: savedTodo }));
   };
 }
 

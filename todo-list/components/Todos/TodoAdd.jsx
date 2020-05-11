@@ -2,7 +2,6 @@ const { connect } = ReactRedux;
 
 import { saveTodo, updateUser } from '../../store/actions/TodoActions.js';
 import { setAlert, removeAlert } from '../../store/actions/AlertActions.js';
-import Alert from '../Layout/Alert.jsx';
 
 class TodoAdd extends React.Component {
   state = {
@@ -17,10 +16,9 @@ class TodoAdd extends React.Component {
 
   onSumbit = (e) => {
     e.preventDefault();
-    const { saveTodo, updateUser, setAlert, removeAlert } = this.props;
+    const { saveTodo, updateUser, setAlert } = this.props;
     if (this.state.title === '') {
       setAlert({ txt: 'You Cant Add Empty Todo', type: 'dark' });
-      setTimeout(() => removeAlert(), 2500);
       return;
     }
     let newActivity = { txt: 'Added a Todo', at: Date.now() };
@@ -32,14 +30,12 @@ class TodoAdd extends React.Component {
     saveTodo(this.state);
     updateUser(user);
     setAlert({ txt: 'Todo Successfully Added', type: 'success' });
-    setTimeout(() => removeAlert(), 2500);
     this.setState({ title: '' });
   };
 
   render() {
     return (
       <React.Fragment>
-        <Alert />
         <div className='text-center flex-center'>
           <form onSubmit={this.onSumbit}>
             <input

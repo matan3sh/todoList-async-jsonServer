@@ -20,7 +20,7 @@ export default function TodoReducer(state = initialState, action) {
     case 'ADD_TODO':
       return {
         ...state,
-        todos: [action.payload, ...state.todos],
+        todos: [...state.todos, action.payload],
       };
     case 'UPDATE_TODO':
       return {
